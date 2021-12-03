@@ -59,7 +59,7 @@ export default function About() {
               <div className="accordion-body"  style={myStyle}>
                 <strong>This is first item's accordion body.</strong> It is
                 shown by default, until the collapse plugin adds the appropriate
-                classes that we use to style each element. These classes control
+                classes that we use hello sir to style each element. These classes control
                 the overall appearance, showing and hiding via
                 CSS transitions. You can modify any of this with custom CSS or
                 overriding our defauIt's also worth noting that
