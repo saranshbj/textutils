@@ -62,7 +62,7 @@ export default function About() {
                 classes that we use to style each element. These classes control
                 the overall appearance, showing and hiding via
                 CSS transitions. You can modify any of this with custom CSS or
-                overriding our default variables. It's also worth noting that
+                overriding our defauIt's also worth noting that
                 just about any HTML can go within the{" "}
                 <code>.accordion-body</code>, though the transition does limit
                 overflow.
