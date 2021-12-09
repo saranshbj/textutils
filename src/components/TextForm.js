@@ -6,18 +6,32 @@ export default function Textform(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
-    props.showAlert("Text converted to uppercase","success")
+    if(text.length===0){
+      props.showAlert("Please Enter any text!","warning")
+    }else{
+      props.showAlert("Text converted to uppercase","success")
+      }
   };
 
+  // function to convert text into
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
-    props.showAlert("Text converted to lowercase","success")
+    if(text.length===0){
+      props.showAlert("Please Enter any text!","warning")
+    }else{
+      props.showAlert("Text converted to lowercase","success")
+      }
   };
 
+  // function to clear textarea text
   const clearText = () => {
     setText('');
-    props.showAlert("Text cleared successfully!","success")
+    if(text.length===0){
+      props.showAlert("Please Enter any text!","warning")
+    }else{
+      props.showAlert("Text cleared successfully!","success")
+      }
   };
 
 
@@ -26,20 +40,25 @@ export default function Textform(props) {
     setText(event.target.value);
   };
 
+  // for copying text from textarea
+  const handleCopy=()=>{
+    let textValue = document.getElementById("myBox")
+    textValue.select()
+    navigator.clipboard.writeText(textValue.value)
+    if(text.length===0){
+      props.showAlert("Please Enter any text!","warning")
+    }else{
+      props.showAlert("Text copied succesfully!","success")
+    }
+  }
+
   // using state
   const [text, setText] = useState("");
 
   // word count 
   const wordCount = text.split(' ')
-  const newWords = wordCount.filter(item => item.length !== 0).length
+  const newWords = wordCount.filter((element)=>{return element.length!==0}).length
 
-  // for copying text from textarea
-  const handleCopy=()=>{
-    let text = document.getElementById("myBox")
-    text.select()
-    navigator.clipboard.writeText(text.value)
-    props.showAlert("Text copied succesfully!","success")
-  }
 
   return (
     <div className="parent" style={{color: props.mode==='dark'?'white':'black'}}>
@@ -56,16 +75,16 @@ export default function Textform(props) {
           rows="8"
         ></textarea>
       </div>
-      <button className="btn btn-primary" onClick={handleUpClick}>
+      <button className="btn btn-primary my-1" onClick={handleUpClick}>
         Convert to Uppercase
       </button>
-      <button className="btn btn-primary mx-3" onClick={handleLoClick}>
+      <button className="btn btn-primary my1 mx-3" onClick={handleLoClick}>
         Convert to Lowercase
       </button>
-      <button className="btn btn-primary" onClick={handleCopy}>
+      <button className="btn btn-primary my-1" onClick={handleCopy}>
         Copy to Clipboard
       </button>
-      <button className="btn btn-danger mx-3" onClick={clearText}>
+      <button className="btn btn-danger mx-3 my-1" onClick={clearText}>
         Clear Text
       </button>
 
